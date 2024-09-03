@@ -8,7 +8,7 @@ export const wishlishSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
-    addItem: (state, action) => {
+    addItemToWishlist: (state, action) => {
       const existingItem = state.wishlist.find(
         (item) => item.id === action.payload.id
       );
@@ -16,10 +16,10 @@ export const wishlishSlice = createSlice({
       if (existingItem) {
         console.log("already in wishlist");
       } else {
-        state.wishlist.push({ ...action.payload });
+        state.wishlist.push({ ...action.payload, wishlist: true });
       }
     },
-    removeItem: (state, action) => {
+    removeItemFromWishlist: (state, action) => {
       state.wishlist = state.wishlist.filter(
         (item) => item.id !== action.payload
       );
@@ -27,5 +27,6 @@ export const wishlishSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem } = wishlishSlice.actions;
+export const { addItemToWishlist, removeItemFromWishlist } =
+  wishlishSlice.actions;
 export default wishlishSlice.reducer;
