@@ -28,8 +28,6 @@ export const cartSlice = createSlice({
       const existingItem = state.cart.find(
         (item) => item.id === action.payload
       );
-      console.log(state.cart);
-      console.log(existingItem);
       if (existingItem) {
         existingItem.quantity++;
       }
@@ -38,8 +36,6 @@ export const cartSlice = createSlice({
       const existingItem = state.cart.find(
         (item) => item.id === action.payload
       );
-      console.log(state.cart);
-      console.log(existingItem);
       if (existingItem && existingItem.quantity > 1) {
         existingItem.quantity--;
       }

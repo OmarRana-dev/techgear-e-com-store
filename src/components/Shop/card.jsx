@@ -44,9 +44,9 @@ function Card({ item }) {
                 className="w-1/5 bg-green-900 rounded-sm"
               >
                 {item.wishlist ? (
-                  <span>&#10005;</span> // Cross symbol for removing from wishlist
+                  <span>&#10005;</span>
                 ) : (
-                  <span>&#9829;</span> // Heart symbol for adding to wishlist
+                  <span>&#9829;</span>
                 )}
               </button>
             </div>

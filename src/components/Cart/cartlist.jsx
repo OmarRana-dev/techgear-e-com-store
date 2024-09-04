@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   decrementQuantity,
@@ -14,25 +14,20 @@ function Cartlist({ item }) {
   useEffect(() => {
     let itemPrice = item.price * item.quantity;
     setCartPrice(itemPrice);
-  }, [item]); // Include item as a dependency
+  }, [item]);
 
   const handleIncrementQuantity = () => {
     dispatch(incrementQuantity(item.id));
-    console.log(item.id);
-    console.log(item);
   };
 
   const handleDecrementQuantity = () => {
     if (item.quantity > 1) {
-      console.log(item.id);
       dispatch(decrementQuantity(item.id));
     }
-    console.log(item);
   };
 
   const handleRemoveItem = () => {
     dispatch(removeItemFromCart(item.id));
-    console.log(item);
   };
 
   return (

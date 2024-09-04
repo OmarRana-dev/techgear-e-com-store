@@ -7,7 +7,7 @@ function Wishlist() {
 
   return (
     <>
-      <div className="m-6 flex flex-col items-center">
+      <div className="m-6 flex min-h-screen flex-col items-center">
         <h2 className="text-2xl font-bold text-center my-10">
           Your WishList
         </h2>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -10,33 +11,33 @@ function Footer() {
           </h1>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
             <li>
-              <a href="#" className="hover:underline me-4 md:me-6">
+              <Link href="#" className="hover:underline me-4 md:me-6">
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline me-4 md:me-6">
+              <Link href="#" className="hover:underline me-4 md:me-6">
                 Privacy Policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline me-4 md:me-6">
+              <Link href="#" className="hover:underline me-4 md:me-6">
                 Licensing
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <Link href="#" className="hover:underline">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
         <span className="block text-sm text-gray-500 sm:text-center">
           © 2023{" "}
-          <a href="/" className="hover:underline">
+          <Link href="/" className="hover:underline">
             TECHGEAR™
-          </a>
+          </Link>
           . All Rights Reserved.
         </span>
       </div>

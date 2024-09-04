@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { useSelector } from "react-redux";
 import Cartlist from "./cartlist";
@@ -6,7 +7,7 @@ import { NavLink } from "react-router-dom";
 function Cart() {
   const { cart } = useSelector((state) => state.cart);
 
-  const shippingFee = 5.0;
+  const shippingFee = cart.length > 0 ? 5 : 0;
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -48,13 +49,13 @@ function Cart() {
             <hr className="my-4" />
             <div className="flex justify-between mb-4">
               <div>ITEMS {cart.length}</div>
-              <div>&euro; {totalPrice.toFixed(2)}</div>
+              <div>$ {totalPrice.toFixed(2)}</div>
             </div>
             <form className="mt-4">
               <p className="mb-2">SHIPPING</p>
               <select className="w-full p-2 mb-4 border bg-gray-100 outline-none">
                 <option className="text-gray-500">
-                  Standard Delivery - &euro;{shippingFee.toFixed(2)}
+                  Standard Delivery - ${shippingFee.toFixed(2)}
                 </option>
               </select>
               <p className="mb-2">GIVE CODE</p>
@@ -66,7 +67,7 @@ function Cart() {
             </form>
             <div className="flex justify-between border-t border-gray-300 py-4">
               <div>TOTAL PRICE</div>
-              <div>&euro; {finalPrice.toFixed(2)}</div>
+              <div>$ {finalPrice.toFixed(2)}</div>
             </div>
             <button className="w-full bg-black text-white py-2 mt-4 hover:bg-gray-800 transition-colors">
               CHECKOUT

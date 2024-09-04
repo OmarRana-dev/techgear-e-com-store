@@ -14,7 +14,7 @@ export const wishlishSlice = createSlice({
       );
 
       if (existingItem) {
-        console.log("already in wishlist");
+        return;
       } else {
         state.wishlist.push({ ...action.payload, wishlist: true });
       }
