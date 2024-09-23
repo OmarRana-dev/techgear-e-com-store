@@ -6,13 +6,13 @@ import {
   image3,
   image4,
   image5,
-} from "../../assets/image";
+} from "../assets/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Shop from "../Shop/shop";
+import Shop from "./Shop/shop";
 import { NavLink } from "react-router-dom";
 
-function Home() {
+function HeroSection() {
   const images = [image1, image2, image3, image4, image5];
 
   const settings = {
@@ -60,4 +60,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HeroSection;

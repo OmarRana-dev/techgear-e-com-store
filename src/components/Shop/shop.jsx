@@ -1,11 +1,34 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchProducts,
+  searchProduct,
+  filterProducts,
+  clearFilters,
+} from "../../features/products/productsSlice";
 import Card from "./card";
+import { ProgressBar } from "../";
+import appwriteService from "../../appwrite/ConfigService";
 
 function Shop() {
-  const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const [imageUrls, setImageUrls] = useState({});
+  const { products, filteredProducts, status, error } = useSelector(
+    (state) => state.products
+  );
 
-  // Render the list of products
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  if (status === "loading") {
+    return <ProgressBar percentage={50} />; // Show loading state
+  }
+
+  if (status === "failed") {
+    return <div>Error: {error}</div>; // Show error message
+  }
+
   return (
     <>
       <div className="m-6 flex flex-col items-center justify-center">
@@ -13,8 +36,14 @@ function Shop() {
           Our Products
         </h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 max-w-5xl">
+          {console.log(products)}
           {products.map((product) => (
-            <Card key={product.id} item={product} />
+            <Card
+              key={product.$id}
+              item={{
+                product,
+              }}
+            />
           ))}
         </div>
       </div>
@@ -23,3 +52,15 @@ function Shop() {
 }
 
 export default Shop;
+
+// const handleSearch = (e) => {
+//   dispatch(searchProduct(e.target.value)); // Dispatch search on user input
+// };
+
+// const handleFilter = (category) => {
+//   dispatch(filterProducts(category)); // Filter by category
+// };
+
+// const resetFilters = () => {
+//   dispatch(clearFilters()); // Reset filters to show all products
+// };
